@@ -1,5 +1,5 @@
 class GaussSeidel:
-    """A class used for solving linear equations"""
+    """A class used for solving linear equations using Gauss-Seidel method"""
 
     def __init__(self, a: list[list[float]], b: list[float], x_0: list[float], steps: int, round_digits: int = 3):
         if len(a) == 0:
