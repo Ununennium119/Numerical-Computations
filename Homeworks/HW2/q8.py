@@ -1,5 +1,3 @@
-import math
-
 from lib.equation.nonlinear.newton import Newton
 
 
@@ -13,7 +11,7 @@ def main():
         3
     )
     newton.solve()
-    print(newton.x_steps)
+    newton.print_result()
 
 
 def f(x: list[float]) -> float:

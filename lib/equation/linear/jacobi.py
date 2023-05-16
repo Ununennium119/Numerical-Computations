@@ -1,7 +1,17 @@
+import math
+from typing import Optional
+
+
 class Jacobi:
     """A class used for solving linear equations using Jacobi method"""
 
-    def __init__(self, a: list[list[float]], b: list[float], x_0: list[float], steps: int, round_digits: int = 3):
+    def __init__(self,
+                 a: list[list[float]],
+                 b: list[float],
+                 x_0: list[float],
+                 steps: int,
+                 round_digits: int = 3,
+                 error: float = 10e-10):
         if len(a) == 0:
             raise ValueError("a is empty!")
         a_dim = len(a), len(a[0])
@@ -17,7 +27,15 @@ class Jacobi:
         self._x: list[float] = x_0
         self._steps: int = steps
         self._round_digits: int = round_digits
+        self._error = error
         self.x_steps: list[list[float]] = []
+
+    @property
+    def error(self) -> Optional[float]:
+        if len(self.x_steps) < 2:
+            return None
+        else:
+            return math.sqrt(sum(((a_i - b_i) ** 2 for a_i, b_i in zip(self.x_steps[-1], self.x_steps[-2]))))
 
     def solve(self):
         """Return solution of the equation."""
@@ -34,4 +52,14 @@ class Jacobi:
                 self._x[j] /= self._A[j][j]
                 self._x[j] = round(self._x[j], self._round_digits)
             self.x_steps.append(self._x.copy())
+            error = self.error
+            if error and error < self._error:
+                break
         return self._x
+
+    def print_result(self):
+        print(f"answer = {self.x_steps[-1]}")
+        print("steps:")
+        for index, step in enumerate(self.x_steps):
+            print(f"\tx({index + 1}) = {step}")
+        print(f"error = {self.error}")

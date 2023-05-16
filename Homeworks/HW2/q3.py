@@ -10,9 +10,12 @@ def main():
         [4, 0, 4],
         [0, 0, 0],
         3,
+        3
     )
     jacobi.solve()
-    print(jacobi.x_steps)
+    jacobi.print_result()
+
+    print("----------------------------------------")
 
     gauss_seidel = GaussSeidel(
         [[4, 1, -2],
@@ -21,10 +24,10 @@ def main():
         [4, 0, 4],
         [0, 0, 0],
         3,
-        15
+        3
     )
     gauss_seidel.solve()
-    print(gauss_seidel.x_steps)
+    gauss_seidel.print_result()
 
 
 if __name__ == '__main__':

@@ -7,24 +7,28 @@ def main():
          [-0.5, 1, 0.25],
          [1, -0.5, 1]],
         [0.2, -1.425, 2],
-        [0.9, 0.8, 0.7],
+        [0, 0, 0],
         300,
-        3
+        3,
+        0.01
     )
+    gauss_seidel.solve()
+    gauss_seidel.print_result()
 
-    print(gauss_seidel.solve())
-    print(gauss_seidel.x_steps)
+    print("----------------------------------------")
+
     gauss_seidel = GaussSeidel(
         [[1, 0, -2],
          [-0.5, 1, -0.25],
          [1, -0.5, 1]],
         [0.2, -1.425, 2],
-        [0.9, 0.8, 0.7],
+        [0, 0, 0],
         300,
-        2
+        2,
+        0.01
     )
-    print(gauss_seidel.solve())
-    print(gauss_seidel.x_steps)
+    gauss_seidel.solve()
+    gauss_seidel.print_result()
 
 
 if __name__ == '__main__':

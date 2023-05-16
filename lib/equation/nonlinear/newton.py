@@ -1,4 +1,5 @@
-from typing import Callable
+import math
+from typing import Callable, Optional
 
 
 class Newton:
@@ -9,7 +10,8 @@ class Newton:
                  jacob: list[list[Callable[[list[float]], float]]],
                  x_0: list[float],
                  steps: int,
-                 round_digits: int = 3):
+                 round_digits: int = 3,
+                 error: float = 10e-10):
         size = len(funcs)
         if len(jacob) != size or len(jacob[0]) != size or len(x_0) != size:
             raise ValueError("size of funcs, jacobian and x_0 should be equal!")
@@ -23,7 +25,15 @@ class Newton:
         self._x: list[float] = x_0
         self._steps: int = steps
         self._round_digits: int = round_digits
+        self._error: float = error
         self.x_steps: list[list[float]] = []
+
+    @property
+    def error(self) -> Optional[float]:
+        if len(self.x_steps) < 2:
+            return None
+        else:
+            return math.sqrt(sum(((a_i - b_i) ** 2 for a_i, b_i in zip(self.x_steps[-1], self.x_steps[-2]))))
 
     def solve(self) -> list[float]:
         """Return solution of the equation."""
@@ -36,3 +46,10 @@ class Newton:
             x[1] -= round(delta_y / det_jacob, self._round_digits)
             self.x_steps.append(self._x.copy())
         return self._x
+
+    def print_result(self):
+        print(f"answer = {self.x_steps[-1]}")
+        print("steps:")
+        for index, step in enumerate(self.x_steps):
+            print(f"\tx({index + 1}) = {step}")
+        print(f"error = {self.error}")

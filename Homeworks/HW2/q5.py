@@ -8,22 +8,24 @@ def main():
          [2, 1]],
         [4, 3],
         [0, 0],
-        5,
+        100,
         3
     )
     gauss_seidel.solve()
-    print(gauss_seidel.x_steps)
+    gauss_seidel.print_result()
+
+    print("----------------------------------------")
 
     gauss_seidel = GaussSeidel(
         [[2, 1],
          [1, -2]],
         [3, 4],
         [0, 0],
-        5,
+        100,
         3
     )
     gauss_seidel.solve()
-    print(gauss_seidel.x_steps)
+    gauss_seidel.print_result()
 
 
 if __name__ == '__main__':
