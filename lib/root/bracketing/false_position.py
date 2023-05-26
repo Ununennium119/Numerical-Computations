@@ -15,9 +15,9 @@ class FalsePositionRoot(BracketingRoot):
         super(FalsePositionRoot, self).__init__(start, end, func, error, max_iterations)
 
     def _get_next_point(self) -> float:
-        start_value = self._func(self._start)
-        end_value = self._func(self._end)
-        return (self._start * end_value - self._end * start_value) / (end_value - start_value)
+        value_1 = self._func(self.steps[-1])
+        value_2 = self._func(self.steps[-2])
+        return (self.steps[-1] * value_2 - self.steps[-2] * value_1) / (value_2 - value_1)
 
     def _calc_error(self) -> float:
         return abs(self._func(self._root))

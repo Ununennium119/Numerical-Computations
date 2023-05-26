@@ -11,9 +11,7 @@ class BracketingRoot(ABC):
                  func: Callable[[float], float],
                  error: float = 10e-7,
                  max_iterations: int = 100):
-        self._start: float = start
-        self._end: float = end
-        self._steps: list[tuple[float, float]] = [(start, end)]
+        self._steps: list[float] = [start, end]
         self._func: Callable[[float], float] = func
         self._error: float = error
         self._max_iterations: int = max_iterations
@@ -26,7 +24,7 @@ class BracketingRoot(ABC):
         return self._root
 
     @property
-    def steps(self) -> list[tuple[float, float]]:
+    def steps(self) -> list[float]:
         return self._steps.copy()
 
     @property
@@ -64,13 +62,9 @@ class BracketingRoot(ABC):
         """Return root of the given function."""
         for self._iteration_count in range(self._max_iterations):
             self._root = self._get_next_point()
+            self._steps.append(self._root)
             if self._func(self._root) == 0 or self._calc_error() < self.error:
                 break
-            if self._func(self._start) * self._func(self._root) < 0:
-                self._end = self._root
-            else:
-                self._start = self._root
-            self._steps.append((self._start, self._end))
         self._iteration_count += 1
 
         return self._root
