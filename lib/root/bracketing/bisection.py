@@ -15,7 +15,7 @@ class BisectionRoot(BracketingRoot):
         super(BisectionRoot, self).__init__(start, end, func, error, max_iterations)
 
     def _get_next_point(self) -> float:
-        return (self.steps[-1] + self.steps[-2]) / 2
+        return (self._start + self._end) / 2
 
     def _calc_error(self) -> float:
-        return abs(self.steps[-1] - self.steps[-2]) / 2
+        return abs(self._start - self._end) / 2
