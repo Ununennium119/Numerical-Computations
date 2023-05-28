@@ -1,8 +1,8 @@
-from lib.root.iterative.gradient_descent import GradientDescent
+from lib import GradientDescent
 
 
 def main():
-    print("-----------B-----------")
+    print("---------------------------B---------------------------")
     alpha_list = [0.001, 0.01, 0.5, 1, 2, 2.5]
     for alpha in alpha_list:
         gradient_descent = GradientDescent(
@@ -12,23 +12,24 @@ def main():
             None,
             1000
         )
-        print(f"alpha = {alpha}", end=', ')
-        print(gradient_descent.find_root(), end=', ')
-        print(gradient_descent.iterations_count, end=', ')
-        print([gradient_descent.points[-2][i] - gradient_descent.points[-1][i] for i in range(2)])
+        print(f'\u03B1 = {alpha}', end=', ')
+        print(f'\u03B2 = {gradient_descent.find_root()}', end=', ')
+        print(f'error = {[gradient_descent.points[-2][i] - gradient_descent.points[-1][i] for i in range(2)]}')
 
-    print("-----------C-----------")
+    print("\n---------------------------C---------------------------")
     beta_list = [[100.0, 10.0], [-1000.0, 1000.0]]
     for beta in beta_list:
         gradient_descent = GradientDescent(
             beta,
             0.1,
             [f_beta1, f_beta2],
-            None,
-            10000
+            0.001,
+            1000
         )
-        print(gradient_descent.find_root())
-        print(gradient_descent.iterations_count)
+        print(f'\u03B20 = {beta}', end=', ')
+        print(f'\u03B2 = {gradient_descent.find_root()}', end=', ')
+        print(f'iterations count = {gradient_descent.iterations_count}', end=', ')
+        print(f'error = {[gradient_descent.points[-2][i] - gradient_descent.points[-1][i] for i in range(2)]}')
 
 
 def f_beta1(beta: list[float]):

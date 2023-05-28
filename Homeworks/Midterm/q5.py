@@ -1,41 +1,39 @@
-from lib.root.bracketing.false_position import FalsePositionRoot
+from lib.root.iterative.secant import SecantRoot
 
 
 def main():
-    false_position = FalsePositionRoot(0, 2, f, 0.01)
-    print(false_position.find_root())
-    print(false_position.steps)
-    print([f(x) for x in false_position.steps])
-    print(false_position.iterations_count)
-    print(false_position.error)
+    print('-------------------------A-------------------------')
+    secant = SecantRoot(0, 2, f, 0.01)
+    secant.find_root()
+    print(f"x = {[round(x, 2) for x in secant.points]}")
+    print(f"f(x) = {[round(f(x), 2) for x in secant.points]}")
 
-    print('--------------------------------------------------')
+    print('\n-------------------------B-------------------------')
 
-    false_position = FalsePositionRoot(0, 1, f, 0.01)
-    false_position.find_root()
-    print(false_position.steps)
-    print([f(x) for x in false_position.steps])
-    print([x ** 2 for x in false_position.steps])
-    print([x ** 3 for x in false_position.steps])
-    print([x ** 4 for x in false_position.steps])
+    secant = SecantRoot(0, 1, f, 0.01)
+    secant.find_root()
+    print(f"x = {[round(x, 2) for x in secant.points]}")
+    print(f"f(x) = {[round(f(x), 2) for x in secant.points]}")
+    print(f"x^2 = {[round(x ** 2, 2) for x in secant.points]}")
+    print(f"x^3 = {[round(x ** 3, 2) for x in secant.points]}")
+    print(f"x^4 = {[round(x ** 4, 2) for x in secant.points]}")
 
-    print('--------------------------------------------------')
+    print('\n--------------------------C------------------------')
 
-    false_position = FalsePositionRoot(-2, 0, f, 0.01)
-    print(false_position.find_root())
-    print(false_position.steps)
-    print([f(x) for x in false_position.steps])
-    print(false_position.iterations_count)
-    print(false_position.error)
+    secant = SecantRoot(-2, 0, f, 0.01)
+    secant.find_root()
+    print(f"x = {[round(x, 2) for x in secant.points]}")
+    print(f"f(x) = {[round(f(x), 2) for x in secant.points]}")
 
-    print('--------------------------------------------------')
+    print('\n---------------------------D-----------------------')
 
-    false_position = FalsePositionRoot(-2.1, 0, f, 0.01)
-    print(false_position.find_root())
-    print(false_position.steps)
-    print([f(x) for x in false_position.steps])
-    print(false_position.iterations_count)
-    print(false_position.error)
+    secant = SecantRoot(-2, 2, f, 0.01)
+    try:
+        secant.find_root()
+    except ZeroDivisionError:
+        print("Failed to find root.")
+    print(f"x = {[round(x, 2) for x in secant.points]}")
+    print(f"f(x) = {[round(f(x), 2) for x in secant.points]}")
 
 
 def f(x: float) -> float:
