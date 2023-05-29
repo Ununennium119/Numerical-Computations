@@ -1,10 +1,6 @@
 import math
 
-from lib.root.bracketing.bisection import BisectionRoot
-from lib.root.bracketing.false_position import FalsePositionRoot
-from lib.root.iterative.fixed_point import FixedPointRoot
-from lib.root.iterative.newton import NewtonRoot
-from lib.root.iterative.secant import SecantRoot
+from lib import BisectionRoot, FalsePositionRoot, FixedPointRoot, NewtonRoot, SecantRoot
 
 
 def main():

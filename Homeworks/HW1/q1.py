@@ -1,6 +1,6 @@
 import math
 
-from lib.root.iterative.newton import NewtonRoot
+from lib import NewtonRoot
 
 
 def main():

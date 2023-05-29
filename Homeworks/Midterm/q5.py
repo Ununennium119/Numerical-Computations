@@ -1,4 +1,4 @@
-from lib.root.iterative.secant import SecantRoot
+from lib import SecantRoot
 
 
 def main():

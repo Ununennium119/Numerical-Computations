@@ -1,4 +1,4 @@
-from lib.equation.linear.gauss_seidel import GaussSeidel
+from lib import GaussSeidel
 
 
 def main():

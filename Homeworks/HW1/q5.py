@@ -1,4 +1,4 @@
-from lib.eval.poly_eval import PolyEval
+from lib import PolyEval
 
 
 def main():

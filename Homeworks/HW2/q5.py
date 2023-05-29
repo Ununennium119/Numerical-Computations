@@ -1,5 +1,4 @@
-from lib.equation.linear.gauss_seidel import GaussSeidel
-from lib.equation.linear.jacobi import Jacobi
+from lib import GaussSeidel
 
 
 def main():

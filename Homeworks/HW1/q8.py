@@ -1,4 +1,4 @@
-from lib.root.bracketing.false_position import FalsePositionRoot
+from lib import FalsePositionRoot
 
 
 def main():

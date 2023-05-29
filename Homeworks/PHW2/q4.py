@@ -1,6 +1,6 @@
 import math
 
-from lib.equation.nonlinear.newton import Newton
+from lib import Newton
 
 
 def main():
