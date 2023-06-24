@@ -1,5 +1,4 @@
-from lib import GaussSeidel
-from lib import Jacobi
+from lib import GaussSeidel, Jacobi
 
 
 def main():

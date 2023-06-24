@@ -1,6 +1,8 @@
 from .equation.linear.jacobi import Jacobi
 from .equation.linear.gauss_seidel import GaussSeidel
 from .equation.nonlinear.newton import Newton
+from .equation.system.linear.cramer import Cramer
+from .equation.system.linear.gauss_elimination import GaussElimination
 from .eval.poly_eval import PolyEval
 from .root.iterative.gradient_descent import GradientDescent
 from .root.iterative.newton import NewtonRoot
@@ -8,3 +10,8 @@ from .root.iterative.secant import SecantRoot
 from .root.iterative.fixed_point import FixedPointRoot
 from .root.bracketing.bisection import BisectionRoot
 from .root.bracketing.false_position import FalsePositionRoot
+from .interpolation.lagrange_interpolation import LagrangeInterpolation
+from .interpolation.newton_interpolation import NewtonInterpolation
+from .integral.trapezoidal_integral import TrapezoidalIntegral
+from .integral.simpson_integral import SimpsonIntegral
+from .differential_equation.runge_kutta import RungeKutta

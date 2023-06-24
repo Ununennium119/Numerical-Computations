@@ -17,14 +17,26 @@ class PolyEval:
             return float(s[0])
         return float(s[0] + '.' + s[1][:digits])
 
-    def evaluate(self, x: float) -> float:
-        """Return value of polynomial in x."""
-        value: float = self._coefficients[0]
+    def evaluate_horner(self, x: float) -> float:
+        """Return value of polynomial in x with Horner's method."""
+        value: float = self._coefficients[-1]
         def round_func(y: float, _) -> float: return y
         if self._round_mode == self.FLOOR:
             round_func = self._floor
         elif self._round_mode == self.ROUND:
             round_func = round
-        for i in range(1, len(self._coefficients)):
+        for i in range(len(self._coefficients) - 2, -1, -1):
             value = round_func(value * x + self._coefficients[i], self._round_digits)
+        return value
+
+    def evaluate(self, x: float) -> float:
+        """Return value of polynomial in x."""
+        value: float = 0
+        def round_func(y: float, _) -> float: return y
+        if self._round_mode == self.FLOOR:
+            round_func = self._floor
+        elif self._round_mode == self.ROUND:
+            round_func = round
+        for i in range(len(self._coefficients)):
+            value = round_func(value + self._coefficients[i] * x ** i, self._round_digits)
         return value

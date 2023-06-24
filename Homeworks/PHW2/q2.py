@@ -4,6 +4,7 @@ from lib import BisectionRoot, FalsePositionRoot, FixedPointRoot, NewtonRoot, Se
 
 
 def main():
+    print("(5)")
     bisection = BisectionRoot(start=-1, end=0, func=f, error=1e-3, max_iterations=100)
     print(f"Bisection: x = {bisection.find_root()}, steps = {bisection.iterations_count}")
 
@@ -19,8 +20,9 @@ def main():
     fixed_point = FixedPointRoot(initial_guess=-0.5, func=f_fixed, error=1e-3, max_iterations=100)
     print(f"Fixed-Point: x = {fixed_point.find_root()}, steps = {fixed_point.iterations_count}")
 
-    print("------------------------------------------------------------------")
+    print()
 
+    print("(6)")
     bisection = BisectionRoot(start=math.pi / 2, end=math.pi, func=g, error=1e-3, max_iterations=100)
     print(f"Bisection: x = {bisection.find_root()}, steps = {bisection.iterations_count}")
 

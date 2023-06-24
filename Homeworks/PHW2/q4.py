@@ -4,7 +4,8 @@ from lib import Newton
 
 
 def main():
-    print("---------- A ----------")
+    print('(11)')
+
     newton = Newton(
         [f_a, g_a],
         [[f_a_x1, f_a_x2],
@@ -18,7 +19,7 @@ def main():
 
     print()
 
-    print("---------- B ----------")
+    print('(12)')
     newton = Newton(
         [f_b, g_b],
         [[f_b_x1, f_b_x2],
