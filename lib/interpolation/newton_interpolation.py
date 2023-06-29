@@ -13,7 +13,7 @@ class NewtonInterpolation(PolyInterpolation):
             for j in range(i):
                 print(f'(x - {self._x[j]})', end='')
             if i != len(self._interpolation) - 1:
-                print(f' + ', end='')
+                print(f' + ')
         print()
 
     def calc_interpolation(self):
@@ -33,3 +33,12 @@ class NewtonInterpolation(PolyInterpolation):
             delta_f = new_delta_f
             new_delta_f = []
             self._interpolation.append(delta_f[0])
+
+    def approx_point(self, x: float) -> float:
+        y = 0
+        for i, coefficient in enumerate(self._interpolation):
+            term = coefficient
+            for j in range(i):
+                term *= x - self._x[j]
+            y += term
+        return y

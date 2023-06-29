@@ -15,7 +15,7 @@ class LagrangeInterpolation(PolyInterpolation):
                     continue
                 print(f'(x - {x_j})', end='')
             if i != len(self._interpolation) - 1:
-                print(f' + ', end='')
+                print(f' + ')
         print()
 
     def calc_interpolation(self):
@@ -26,3 +26,14 @@ class LagrangeInterpolation(PolyInterpolation):
                     continue
                 divisor *= self._x[i] - self._x[j]
             self._interpolation.append(self._y[i] / divisor)
+
+    def approx_point(self, x: float) -> float:
+        y = 0
+        for i, coefficient in enumerate(self._interpolation):
+            term = coefficient
+            for j, x_j in enumerate(self._x):
+                if i == j:
+                    continue
+                term *= x - x_j
+            y += term
+        return y

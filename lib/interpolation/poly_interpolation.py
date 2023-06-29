@@ -28,3 +28,8 @@ class PolyInterpolation(ABC):
     def calc_interpolation(self) -> None:
         """Calculates interpolation"""
         pass
+
+    @abstractmethod
+    def approx_point(self, x: float) -> float:
+        """Returns an Approximation of value of the function at the point x."""
+        pass

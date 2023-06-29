@@ -2,6 +2,7 @@ from lib import TrapezoidalIntegral, SimpsonIntegral
 
 
 def main():
+    print('-------------------------A-------------------------')
     for n in (2, 4):
         y = []
         x = -2
@@ -9,12 +10,14 @@ def main():
         for i in range(n + 1):
             y.append(f(x))
             x += h
+
         trapezoidal_integral = TrapezoidalIntegral(y, h)
         trapezoidal_integral.calc_integral()
-        print(f'trapezoidal, n={n}, {trapezoidal_integral.result}')
+        print(f'I≈{trapezoidal_integral.result}, n={n} (Trapezoidal)')
+
         simpson_integral = SimpsonIntegral(y, h)
         simpson_integral.calc_integral()
-        print(f'simpson, n={n}, {simpson_integral.result}')
+        print(f'I≈{simpson_integral.result}, n={n} (Simpson)')
 
 
 def f(x: float) -> float:

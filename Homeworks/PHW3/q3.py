@@ -3,6 +3,7 @@ from lib import RungeKutta
 
 
 def main():
+    print('-------------------------A-------------------------')
     runge_kutta = RungeKutta(
         f=f,
         start=0,
@@ -10,10 +11,9 @@ def main():
         step=0.25,
         y_0=1
     )
-
     for i in range(1, 5):
         runge_kutta.calc(i)
-        print(runge_kutta.result)
+        print(f'y_i = {runge_kutta.result}, order={i}')
 
 
 def f(x: float, y: float) -> float:
