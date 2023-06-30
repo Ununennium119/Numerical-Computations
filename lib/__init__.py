@@ -15,3 +15,4 @@ from .interpolation.newton_interpolation import NewtonInterpolation
 from .integral.trapezoidal_integral import TrapezoidalIntegral
 from .integral.simpson_integral import SimpsonIntegral
 from .differential_equation.runge_kutta import RungeKutta
+from .differential_equation.system_2_runge_kutta import System2RungeKutta
