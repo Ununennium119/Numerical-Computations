@@ -12,7 +12,7 @@ def main():
         3
     )
     runge_kutta.calc(order=1)
-    print(runge_kutta.y)
+    print(runge_kutta.y)    
     print(runge_kutta.p)
 
 
